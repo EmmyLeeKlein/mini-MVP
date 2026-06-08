@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Copilot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo">
+        <div class="logo-icon">✦</div>
+        <span class="logo-text">Career Copilot</span>
+      </div>
+      <p class="header-subtitle">Your AI-powered interview preparation coach</p>
+    </header>
+
+    <!-- Generator Card -->
+    <main>
+      <div class="card generator-card">
+        <h2 class="section-title">Generate Your Interview Kit</h2>
+        <p class="section-subtitle">Select your target role and experience level to get personalized interview questions.</p>
+
+        <!-- Role Selector -->
+        <div class="form-group">
+          <label class="form-label" for="role-select">Target Role</label>
+          <div class="select-wrapper">
+            <select id="role-select" class="form-select">
+              <option value="">Choose a role...</option>
+              <option value="Frontend Developer">Frontend Developer</option>
+              <option value="Backend Developer">Backend Developer</option>
+              <option value="Full Stack Developer">Full Stack Developer</option>
+              <option value="Product Manager">Product Manager</option>
+              <option value="UX Designer">UX Designer</option>
+              <option value="Data Analyst">Data Analyst</option>
+              <option value="Marketing Manager">Marketing Manager</option>
+              <option value="Business Analyst">Business Analyst</option>
+              <option value="Project Manager">Project Manager</option>
+              <option value="QA Engineer">QA Engineer</option>
+            </select>
+            <span class="select-arrow">▾</span>
+          </div>
+          <p class="validation-message" id="role-error">Please select a role to continue.</p>
+        </div>
+
+        <!-- Experience Selector -->
+        <div class="form-group">
+          <label class="form-label">Experience Level</label>
+          <div class="experience-buttons">
+            <button class="experience-btn" id="btn-student" data-level="Student">
+              <span class="exp-icon">🎓</span>
+              <span class="exp-label">Student</span>
+              <span class="exp-desc">No work experience yet</span>
+            </button>
+            <button class="experience-btn" id="btn-junior" data-level="Junior">
+              <span class="exp-icon">🚀</span>
+              <span class="exp-label">Junior</span>
+              <span class="exp-desc">0–2 years experience</span>
+            </button>
+          </div>
+          <p class="validation-message" id="level-error">Please select your experience level.</p>
+        </div>
+
+        <!-- Generate Button -->
+        <button class="btn-primary" id="generate-btn">
+          <span id="btn-text">✦ Generate Interview Kit</span>
+          <span id="btn-loader" class="btn-loader hidden">
+            <span class="spinner"></span> Generating...
+          </span>
+        </button>
+      </div>
+
+      <!-- Results Section -->
+      <div id="results-section" class="hidden">
+
+        <div class="results-header">
+          <div class="results-badge" id="results-badge"></div>
+          <h2 class="results-title">Your Interview Kit</h2>
+          <p class="results-subtitle" id="results-subtitle"></p>
+        </div>
+
+        <div id="questions-container" class="questions-container"></div>
+
+        <button class="btn-secondary" id="restart-btn">↩ Generate New Kit</button>
+      </div>
+
+      <!-- Error Banner -->
+      <div id="error-banner" class="error-banner hidden">
+        <span>⚠️</span>
+        <span id="error-text">Something went wrong. Please try again.</span>
+      </div>
+
+      <!-- Fallback Demo Banner -->
+      <div id="demo-banner" class="demo-banner hidden">
+        <span>💡</span>
+        <span>Showing demo questions — add your OpenAI API key in Netlify to get real AI responses.</span>
+      </div>
+
+    </main>
+
+    <footer class="app-footer">
+      <p>Powered by OpenAI · Built for students & early-career professionals</p>
+    </footer>
+
+  </div>
+
+  <script src="ai.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
